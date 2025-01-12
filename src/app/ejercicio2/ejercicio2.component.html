@@ -1,1 +1,73 @@
-<p>ejercicio2 works!</p>
+<div class="container">
+  <h1>EJERCICIO2</h1>
+
+  <!-- Formulario para agregar un nuevo pedido -->
+  <div>
+    <h3>Agregar Nuevo Pedido</h3>
+
+    <label for="cliente">Nombre del Cliente:</label>
+    <input [(ngModel)]="nuevoCliente" id="cliente" type="text" placeholder="Nombre del cliente" />
+
+    <!-- Añadir platos al pedido -->
+    <div>
+      <h4>Platos:</h4>
+      <div *ngFor="let plato of platosParaAgregar; let i = index">
+        <label for="platoNombre{{i}}">Nombre del Plato:</label>
+        <input [(ngModel)]="plato.nombre" id="platoNombre{{i}}" type="text" placeholder="Nombre del plato" />
+
+        <label for="platoPrecio{{i}}">Precio del Plato:</label>
+        <input [(ngModel)]="plato.precio" id="platoPrecio{{i}}" type="number" placeholder="Precio" />
+      </div>
+
+      <button (click)="agregarPlato()">Agregar Plato</button>
+    </div>
+
+    <!-- Botón para agregar el pedido -->
+    <button (click)="agregarPedido()">Agregar Pedido</button>
+  </div>
+
+  <!-- Mostrar el total de ventas -->
+  <div>
+    <h3>Total de Ventas: {{ totalVentas | currency:'EUR' }}</h3>
+    <button (click)="actualizarTotalVentas()">Actualizar Total de Ventas</button>
+  </div>
+
+  <!-- Buscar pedidos de un cliente -->
+  <div>
+    <h3>Buscar Pedidos por Cliente</h3>
+    <input [(ngModel)]="clienteBuscado" type="text" placeholder="Nombre del cliente" />
+    <button (click)="actualizarPedidosCliente(clienteBuscado)">Buscar</button>
+
+    <div *ngIf="pedidosCliente.length > 0">
+      <h4>Pedidos de "{{clienteBuscado}}":</h4>
+      <ul>
+        <li *ngFor="let pedido of pedidosCliente">
+          Pedido #{{pedido.id}} - Total: {{ pedido.calculaTotal() | currency:'EUR' }}
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="pedidosCliente.length === 0">
+      <p>No se encontraron pedidos para este cliente.</p>
+    </div>
+  </div>
+
+  <!-- Filtrar pedidos por monto mínimo -->
+  <div>
+    <h3>Filtrar Pedidos por Monto Mínimo</h3>
+    <input [(ngModel)]="minimoPedido" type="number" placeholder="Monto mínimo" />
+    <button (click)="actualizarPedidosFiltrados(minimoPedido)">Filtrar</button>
+
+    <div *ngIf="pedidoMinimo.length > 0">
+      <h4>Pedidos con total mayor a {{ minimoPedido | currency:'EUR' }}:</h4>
+      <ul>
+        <li *ngFor="let pedido of pedidoMinimo">
+          Pedido #{{pedido.id}} - Cliente: {{ pedido.cliente }} - Total: {{ pedido.calculaTotal() | currency:'EUR' }}
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="pedidoMinimo.length === 0">
+      <p>No hay pedidos con un total mayor al monto mínimo ingresado.</p>
+    </div>
+  </div>
+
+</div>

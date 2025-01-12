@@ -92,6 +92,11 @@ export class Ejercicio1Component {
 
   calcularPromedio(): number{
 
+    //SINTAXIS BASICA DE ARRAY.REDUCE MUY MUY IMPORTANTE
+
+    // array.reduce((acumulador, elementoActual) => {
+    // }, valorInicial POR ESO HAY QUE PONER 0, ES EL VALOR INICIAL DEL ACUMULADOR!);
+
     //primero declaro el total
     const sumaTotal = this.peliculas.reduce((sum, pelicula) => sum + pelicula.calificacion, 0);
     //devuelvo el total con el promedio
