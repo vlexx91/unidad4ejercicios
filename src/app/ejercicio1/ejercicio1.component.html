@@ -1,0 +1,41 @@
+<h1>EJERCICIO1</h1>
+
+<!-- Buscar películas por género -->
+<div>
+  <h2>Buscar por Género</h2>
+  <input type="text" placeholder="Género" [(ngModel)]="genero" />
+  <button (click)="resultadosPorGenero = buscarPeliculaPorGenero(genero)">Buscar</button>
+  <ul>
+    <li *ngFor="let pelicula of resultadosPorGenero">
+      {{ pelicula.titulo }} - {{ pelicula.genero }}
+    </li>
+  </ul>
+</div>
+
+<!-- Mostrar las 3 mejores películas -->
+<div>
+  <h2>Top 3 Películas Mejor Calificadas</h2>
+  <button (click)="mejoresPeliculas = peliculasMejorCalificadas(calificacion)">Mostrar</button>
+  <ul>
+    <li *ngFor="let pelicula of mejoresPeliculas">
+      {{ pelicula.titulo }} - Calificación: {{ pelicula.calificacion }}
+    </li>
+  </ul>
+</div>
+
+<!-- Calcular promedio de calificaciones -->
+<div>
+  <h2>Calcular Promedio de Calificaciones</h2>
+  <button (click)="contadorCalificacion = calcularPromedio()">Calcular</button>
+  <p>Promedio de calificación: {{ contadorCalificacion }}</p>
+</div>
+
+<!-- Actualizar calificación de una película -->
+<div>
+  <h2>Actualizar Calificación</h2>
+  <input type="text" placeholder="Título" [(ngModel)]="titulo" />
+  <input type="number" placeholder="Nueva Calificación" [(ngModel)]="calificacion" />
+  <button (click)="actualizarCalificacion(titulo, +calificacion)">
+    Actualizar
+  </button>
+</div>
