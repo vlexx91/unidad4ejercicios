@@ -1,1 +1,8 @@
-<p>ejercicio5 works!</p>
+<div>
+  <h1>EJERCICIO5</h1>
+  <div *ngFor="let cliente of banco.clientes">
+    <p>{{ cliente.mostrarEstado() }}</p>
+  </div>
+  <p *ngIf="mensaje">{{ mensaje }}</p>
+  <p><strong>Saldo total del banco:</strong> {{ banco.calcularSaldoTotal() }}€</p>
+</div>
