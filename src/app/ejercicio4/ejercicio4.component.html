@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>EJERCICIO4</h1>
+
+  <!-- Buscar palabra -->
+  <div>
+    <h2>Buscar Palabra</h2>
+    <p><strong>Atención!</strong> busca la palabra tal y como se escribe! (Ej: TypeScript)</p>
+    <input type="text" [(ngModel)]="palabraBuscar" placeholder="Escribe una palabra" />
+    <button (click)="resultadoBusqueda = buscarPalabras(palabraBuscar)">Buscar</button>
+    <p *ngIf="resultadoBusqueda">{{ resultadoBusqueda }}</p>
+  </div>
+
+  <!-- Agregar palabra -->
+  <div>
+    <h2>Agregar Palabra</h2>
+    <input type="text" [(ngModel)]="palabraAgregar" placeholder="Escribe una palabra nueva" />
+    <button (click)="mensajeAgregar = agregarPalabras(palabraAgregar)">Agregar</button>
+    <p *ngIf="mensajeAgregar">{{ mensajeAgregar }}</p>
+  </div>
+
+  <!-- Ordenar palabras -->
+  <div>
+    <h2>Ordenar Palabras</h2>
+    <button (click)="ordenarPalabras()">Ordenar Alfabéticamente</button>
+  </div>
+
+  <!-- Mostrar lista de palabras -->
+  <div>
+    <h2>Lista de Palabras Clave</h2>
+    <ul>
+      <li *ngFor="let palabra of palabrasClave">{{ palabra }}</li>
+    </ul>
+  </div>
+</div>
