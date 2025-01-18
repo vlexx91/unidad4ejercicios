@@ -1,0 +1,51 @@
+<div class="container">
+  <h1>EJERCICIO6</h1>
+
+  <!-- Mostrar todos los animales -->
+  <h2>Lista de Animales</h2>
+  <ul>
+    <li *ngFor="let animal of zoologico.animales">
+      <strong>{{ animal.nombre }}</strong> ({{ animal.especie }}) -
+      Edad: {{ animal.edad }} | Hábitat: {{ animal.habitat }}
+
+      <!-- Formulario para cambiar hábitat -->
+      <div>
+        <input [(ngModel)]="nuevoHabitat" placeholder="Nuevo hábitat" />
+        <button (click)="cambiarHabitatAnimal(animal)">Cambiar hábitat</button>
+      </div>
+
+      <!-- Botón para incrementar edad -->
+      <div>
+        <button (click)="incrementarEdadAnimal(animal)">Incrementar Edad</button>
+      </div>
+    </li>
+  </ul>
+
+  <!-- Formulario para filtrar por especie -->
+  <h2>Buscar Animales por Especie</h2>
+  <input type="text" [(ngModel)]="especieBusqueda" placeholder="Especie" />
+  <button (click)="buscarPorEspecie()">Buscar</button>
+
+  <h3 *ngIf="resultadosEspecie.length > 0">Resultados:</h3>
+  <ul *ngIf="resultadosEspecie.length > 0">
+    <li *ngFor="let animal of resultadosEspecie">
+      {{ animal.mostrarInformacion() }}
+    </li>
+  </ul>
+  <p *ngIf="resultadosEspecie.length === 0 && especieBusqueda">No se encontraron animales de esa especie.</p>
+
+  <!-- Formulario para filtrar por hábitat -->
+  <h2>Buscar Animales por Hábitat</h2>
+  <input type="text" [(ngModel)]="habitatBusqueda" placeholder="Hábitat" />
+  <button (click)="buscarPorHabitat()">Buscar</button>
+
+  <h3 *ngIf="resultadosHabitat.length > 0">Resultados:</h3>
+  <ul *ngIf="resultadosHabitat.length > 0">
+    <li *ngFor="let animal of resultadosHabitat">
+      {{ animal.mostrarInformacion() }}
+    </li>
+  </ul>
+  <p *ngIf="resultadosHabitat.length === 0 && habitatBusqueda">No se encontraron animales en ese hábitat.</p>
+
+
+</div>

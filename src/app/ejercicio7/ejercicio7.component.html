@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>EJERCICIO7</h1>
+
+  <h2>Productos con precio > 10</h2>
+  <ul>
+    <li *ngFor="let producto of nombreProductos">{{ producto }}</li>
+  </ul>
+
+  <h2>Precio Promedio de "Comida"</h2>
+  <p>{{ promedio | number: '1.1-2' }}</p>
+
+  <h2>Productos con descuento</h2>
+  <ul>
+    <li *ngFor="let producto of productosDescuentos">
+      {{ producto.nombre }} - {{ producto.precio | currency: '€' }}
+    </li>
+  </ul>
+
+  <div>
+    <h2> Listado de productos </h2>
+    <ul>
+      <li *ngFor="let producto of listaProductos"> {{ producto.nombre }} - {{ producto.precio | currency: '€' }} - {{ producto.categoria }}</li>
+    </ul>
+  </div>
+</div>
