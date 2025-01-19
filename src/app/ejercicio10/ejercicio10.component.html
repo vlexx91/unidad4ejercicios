@@ -1,0 +1,13 @@
+<div>
+  <h1>EJERCICIO10</h1>
+  <h2>Detalles de los Empleados</h2>
+  <ul>
+    <li *ngFor="let empleado of empleados">
+      <!-- Mostrar los detalles generales del empleado -->
+      {{ empleado.mostrarDetalles() }}
+
+      <!-- Mostrar el salario calculado -->
+      <br> Salario total: {{ empleado.calcularSalario() }}
+    </li>
+  </ul>
+</div>
